@@ -20,7 +20,7 @@
 }
 
 .label{
-    font-size: 1rem;
+    font-size: 0.875rem;
     font-weight: 500;
     color: #1a1a1a;
 }
@@ -133,17 +133,156 @@ input[type="radio" i] {
     color: #ffffff;
 }
 
-.imgPreviewWrap{
-  margin-top: 10px;
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid rgba(0,0,0,0.10);
-  background: rgba(0,0,0,0.03);
+/* Hide default file input */
+.fileInput {
+  display: none;
 }
 
-.imgPreview{
+/* Wrapper */
+.uploadArea {
+  margin-top: 8px;
+}
+
+/* Square box */
+.uploadSquare {
+  width: 180px;
+  height: 180px;
+  border-radius: 16px;
+  border: 1px dashed #e0e6ef;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: 0.2s ease;
+}
+
+.uploadSquare:hover {
+  border-color: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* + icon layout */
+.plusWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.plusIcon {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.65);
+  line-height: 1;
+}
+
+.plusText {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+/* Uploaded image fills the square */
+.uploadImg {
   width: 100%;
-  max-height: 160px;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
+
+/* Image wrapper */
+.imageWrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Remove (X) button */
+.removeBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: 0.2s ease;
+}
+
+.removeBtn:hover {
+  background: rgba(0, 0, 0, 0.85);
+  transform: scale(1.05);
+}
+
+/* Tooltip wrapper */
+.tooltip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 6px;
+  cursor: help;
+  color: #6b7280; /* subtle gray */
+  font-weight: 600;
+}
+
+/* Tooltip text box */
+.tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111827;
+  color: #ffffff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  width: max-content;
+  max-width: 220px;
+  text-align: left;
+  z-index: 10;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform-origin: bottom;
+}
+
+/* Tooltip arrow */
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #111827 transparent transparent transparent;
+}
+
+/* Show on hover */
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+
