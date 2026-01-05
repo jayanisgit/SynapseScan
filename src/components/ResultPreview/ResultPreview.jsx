@@ -23,7 +23,7 @@ export default function ResultPreview({ submitted }) {
   if (!submitted) {
     return (
       <div className="emptyState">
-        <div className="empty-heading">No result yet</div>
+        <h3>No result yet</h3>
         <p>
           Fill the form and click <b>Submit</b> to preview results here.
         </p>
