@@ -285,4 +285,23 @@ input[type="radio" i] {
   transform: translateX(-50%) translateY(-4px);
 }
 
+.labelRow{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+}
 
+.miniBtn{
+  border: 1px solid rgba(0,0,0,0.14);
+  background: rgba(0,0,0,0.03);
+  padding: 6px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.miniBtn:hover{
+  background: rgba(0,0,0,0.06);
+}

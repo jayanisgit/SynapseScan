@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "./ClinicalForm.css";
+import MMSECalculatorModal from "../MMSECalculatorModal/MMSECalculatorModal";
 
 const initialState = {
   gender: "Male",
@@ -13,6 +14,7 @@ const initialState = {
 };
 
 export default function ClinicalForm({ onSubmitFinal }) {
+  const [mmseOpen, setMmseOpen] = useState(false);
   const [form, setForm] = useState(initialState);
   const [error, setError] = useState("");
 
@@ -215,6 +217,11 @@ export default function ClinicalForm({ onSubmitFinal }) {
                 Mini-Mental State Examination score. 0 = worst cognitive function, 30 = best.
               </span>
             </span>
+            <button
+              type="button"
+              className="miniBtn"
+              onClick={() => setMmseOpen(true)}
+            ></button>
           </label>
           <input
             type="number"
@@ -363,6 +370,16 @@ export default function ClinicalForm({ onSubmitFinal }) {
       </div>
 
       <p className="smallNote">Fields marked * are required.</p>
+      <MMSECalculatorModal
+        open={mmseOpen}
+        onClose={() => setMmseOpen(false)}
+        onApplyScore={(score) => {
+          update("mmse", String(score)); // ✅ auto fill MMSE input
+          setMmseOpen(false);
+        }}
+      />
+
     </form>
+    
   );
 }
