@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Brain, Info, Activity } from "lucide-react";
+import { Home, Info, Activity } from "lucide-react";
 import "./TopBar.css";
 import Brand from "../../assets/synapsescan-logo.svg"
 
@@ -22,6 +22,13 @@ export default function TopBar() {
           <NavLink
             to="/"
             end
+            className={({ isActive }) => `navLink ${isActive ? "active" : ""}`}
+          >
+            <Home size={16} />
+            <span>Home</span>
+          </NavLink>
+          <NavLink
+            to="/predict"
             className={({ isActive }) => `navLink ${isActive ? "active" : ""}`}
           >
             <Activity size={16} />

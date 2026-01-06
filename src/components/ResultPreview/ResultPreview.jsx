@@ -54,7 +54,7 @@ export default function ResultPreview({ submitted }) {
       {/* Header */}
       <div className="previewTop">
         <div>
-          <h3 className="name">Result Preview</h3>
+          {/* <h3 className="name">Result Preview</h3> */}
           <p className="meta">
             Age: {input.Age} • Gender: {genderLabel} • MMSE: {input.MMSE}
           </p>
