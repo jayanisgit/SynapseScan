@@ -219,9 +219,9 @@ export default function ClinicalForm({ onSubmitFinal }) {
             </span>
             <button
               type="button"
-              className="miniBtn"
+              className="miniBtn is-cal"
               onClick={() => setMmseOpen(true)}
-            ></button>
+            >Calculate Score</button>
           </label>
           <input
             type="number"
