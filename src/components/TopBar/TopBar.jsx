@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { Brain, Info, Activity } from "lucide-react";
 import "./TopBar.css";
+import Brand from "../../assets/synapsescan-logo.svg"
 
 export default function TopBar() {
   return (
@@ -9,7 +10,7 @@ export default function TopBar() {
       <div className="topbarInner">
         <div className="brand">
           <div className="brandIcon">
-            <Brain size={18} />
+            <img src={Brand} alt="" />
           </div>
           <div className="brandText">
             <div className="brandTitle">Synapsescan</div>
