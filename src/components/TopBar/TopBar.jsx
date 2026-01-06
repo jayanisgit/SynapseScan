@@ -37,9 +37,7 @@ export default function TopBar() {
           </NavLink>
         </nav>
 
-        <div className="rightSlot">
-          {/* Optional: add user/profile later */}
-        </div>
+       
       </div>
     </header>
   );
