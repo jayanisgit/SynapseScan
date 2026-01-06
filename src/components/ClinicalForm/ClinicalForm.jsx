@@ -101,7 +101,7 @@ export default function ClinicalForm({ onSubmitFinal }) {
     setImageFile(null);
     setError("");
     setLoading(false);
-    onSubmitFinal(null); // ✅ clear preview
+    onSubmitFinal(null);
   }
 
   useEffect(() => {
@@ -142,7 +142,15 @@ export default function ClinicalForm({ onSubmitFinal }) {
       {/* Age + Educ */}
       <div className="form-field-wrapper">
         <div className="field">
-          <label className="label">Age (Int) *</label>
+          <label className="label">
+            Age (Int) *
+            <span className="tooltip">
+              ⓘ
+              <span className="tooltip-text">
+                Patient age in completed years.
+              </span>
+            </span>
+          </label>
           <input
             type="number"
             inputMode="numeric"
@@ -153,7 +161,15 @@ export default function ClinicalForm({ onSubmitFinal }) {
         </div>
 
         <div className="field">
-          <label className="label">Years of Education (EDUC) *</label>
+          <label className="label">
+            Years of Education (EDUC) *
+            <span className="tooltip">
+              ⓘ
+              <span className="tooltip-text">
+                Total number of completed years of formal education.
+              </span>
+            </span>
+          </label>
           <input
             type="number"
             inputMode="numeric"
@@ -167,7 +183,16 @@ export default function ClinicalForm({ onSubmitFinal }) {
       {/* SES + MMSE */}
       <div className="form-field-wrapper">
         <div className="field">
-          <label className="label">SES (1–5) *</label>
+          <label className="label">
+            SES (1-5) *
+            <span className="tooltip">
+              ⓘ
+              <span className="tooltip-text">
+                Socioeconomic status based on the Hollingshead Index. 1 = Highest SES, 5 = Lowest SES.
+
+              </span>
+            </span>
+          </label>
           <select
             className="input"
             value={form.ses}
@@ -182,7 +207,15 @@ export default function ClinicalForm({ onSubmitFinal }) {
         </div>
 
         <div className="field">
-          <label className="label">MMSE (0–30) *</label>
+          <label className="label">
+            MMSE (0-30) *
+            <span className="tooltip">
+              ⓘ
+              <span className="tooltip-text">
+                Mini-Mental State Examination score. 0 = worst cognitive function, 30 = best.
+              </span>
+            </span>
+          </label>
           <input
             type="number"
             inputMode="numeric"
@@ -198,7 +231,15 @@ export default function ClinicalForm({ onSubmitFinal }) {
       {/* eTIV */}
       <div className="form-field-wrapper">
         <div className="field">
-          <label className="label">eTIV (mm³) *</label>
+          <label className="label">
+            eTIV (mm³) *
+            <span className="tooltip">
+              ⓘ
+              <span className="tooltip-text">
+                Estimated total intracranial volume in cubic millimeters.
+              </span>
+            </span>
+          </label>
           <input
             type="number"
             inputMode="numeric"
@@ -212,7 +253,15 @@ export default function ClinicalForm({ onSubmitFinal }) {
       {/* nWBV + ASF */}
       <div className="form-field-wrapper">
         <div className="field">
-          <label className="label">nWBV (decimal) *</label>
+          <label className="label">
+            nWBV (decimal) *
+            <span className="tooltip">
+              ⓘ
+              <span className="tooltip-text">
+                Normalized whole-brain volume. Represents relative brain volume.
+              </span>
+            </span>
+          </label>
           <input
             type="number"
             step="0.01"
@@ -223,7 +272,15 @@ export default function ClinicalForm({ onSubmitFinal }) {
         </div>
 
         <div className="field">
-          <label className="label">ASF (decimal) *</label>
+          <label className="label">
+            ASF (decimal) *
+            <span className="tooltip">
+              ⓘ
+              <span className="tooltip-text">
+                Atlas scaling factor used during brain image normalization.
+              </span>
+            </span>
+          </label>
           <input
             type="number"
             step="0.01"
@@ -238,24 +295,50 @@ export default function ClinicalForm({ onSubmitFinal }) {
       <div className="form-field-wrapper">
         <div className="field">
           <label className="label">MRI Image *</label>
-          <div className="uploadBox">
+          <div className="uploadArea">
             <input
+              id="mriUpload"
+              className="fileInput"
               type="file"
               accept="image/png,image/jpeg"
               onChange={(e) => setImageFile(e.target.files?.[0] || null)}
             />
+              <label htmlFor="mriUpload" className="uploadSquare">
+                {imagePreviewUrl ? (
+                  <div className="imageWrap">
+                    <img className="uploadImg" src={imagePreviewUrl} alt="MRI preview" />
 
+                    <button
+                      type="button"
+                      className="removeBtn"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setImageFile(null);
+                      }}
+                    >
+                      ✕
+                    </button>
+                  </div>
+                ) : (
+                  <div className="plusWrap">
+                    <span className="plusIcon">+</span>
+                    <span className="plusText">Upload MRI</span>
+                  </div>
+                )}
+
+              </label>
             {imageFile && (
               <p className="fileHint">
                 Selected: <span>{imageFile.name}</span>
               </p>
             )}
 
-            {imagePreviewUrl && (
+            {/* {imagePreviewUrl && (
               <div className="imgPreviewWrap">
                 <img className="imgPreview" src={imagePreviewUrl} alt="MRI preview" />
               </div>
-            )}
+            )} */}
           </div>
 
         </div>

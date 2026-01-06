@@ -8,7 +8,7 @@ export default function PredictorPage() {
     const [submitted, setSubmitted] = useState(null);
   return (
     <div className="main-wrapper">
-        <div className="top-bar">top bar</div>
+        <div className="top-bar">SYNAPSESCAN</div>
         <div className="content-wrapper">
             <div className="left-panel">
                 <h2 className="panelTitle">Clinical Data</h2>
